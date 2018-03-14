@@ -1,7 +1,10 @@
 # Module3
-for Run Application ,
--npm install 
--npm Start
+To Run Application ,
+-npm install, 
+-npm Start,
+
+Packges, 
+
 
 ---------------------------------------------------------------------------------------
 
