@@ -1,70 +1,96 @@
 import React from 'react';
 import { Component } from 'react';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-
   }
 
-
   render() {
+    var products = [{
+      id: 1,
+      name: "Item name 1",
+      price: 100
+    },{
+      id: 2,
+      name: "Item name 2",
+      price: 100
+    },
+    {
+      id: 3,
+      name: "Item name 3",
+      price: 100
+    },
+    {
+      id: 4,
+      name: "Item name 4",
+      price: 100
+    },
+    {
+      id: 5,
+      name: "Item name 5",
+      price: 100
+    },{
+      id: 6,
+      name: "Item name 6",
+      price: 100
+    },{
+      id: 7,
+      name: "Item name 7",
+      price: 100
+    },
+    {
+      id: 8,
+      name: "Item name 8",
+      price: 100
+    },
+    {
+      id: 9,
+      name: "Item name 9",
+      price: 100
+    },
+    {
+      id: 10,
+      name: "Item name 10",
+      price: 100
+    },
+    {
+      id: 11,
+      name: "Item name 11",
+      price: 100
+    },{
+      id: 12,
+      name: "Item name 12",
+      price: 100
+    },
+    {
+      id: 13,
+      name: "Item name 13",
+      price: 100
+    },
+    {
+      id: 14,
+      name: "Item name 14",
+      price: 100
+    },
+    {
+      id: 15,
+      name: "Item name 15",
+      price: 100
+    }];
+    // It's a data format example.
+    function priceFormatter(cell, row){
+    return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
+    }
     return (
-      <form onSubmit={this.handleClick}>
-        <div className="header">
-          <div class="row">
-            <div class="col-lg-12">
-              <section class="panel">
-                <header class="panel-heading">
-                  Advanced Table
-              </header>
-
-                <table class="table table-striped table-advance table-hover">
-                  <tbody>
-                    <tr>
-                      <th><i class="icon_profile"></i>Name</th>
-                      <th><i class="icon_calendar"></i> Years of Experience</th>
-                      <th><i class="icon_mail_alt"></i> CV Link</th>
-                      <th><i class="icon_pin_alt"></i> Evaluation Link</th>
-                      <th><i class="icon_mobile"></i> L1 Result</th>
-                      <th><i class="icon_cogs"></i> Evaluate</th>
-                    </tr>
-                    <tr>
-                      <td>Angeline Mcclain</td>
-                      <td>5</td>
-                      <td>dale@chief.info</td>
-                      <td>dale@chief.info</td>
-                      <td>dale@chief.info</td>
-                      <td>
-                        <div class="btn-group">
-                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Martin Cylo</td>
-                      <td>3</td>
-                      <td>dale@chief.info</td>
-                      <td>dale@chief.info</td>
-                      <td>dale@chief.info</td>
-                      <td>
-                        <div class="btn-group">
-                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-            </div>
-          </div>
-        </div>
-      </form>
+      <BootstrapTable ref='table' data={products} striped={true} hover={true} search searchPlaceholder='input something...' pagination>
+      <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
+      <TableHeaderColumn dataField="name" dataSort={true}>Product Name</TableHeaderColumn>
+      <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
+    </BootstrapTable>
 
     );
   }
