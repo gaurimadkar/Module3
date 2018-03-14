@@ -6,14 +6,17 @@ import Dashboard from '../src/components/Dashboard';
 import Gkeval from '../src/components/Gkeval';
 
 
-
 class App extends Component {
+
+  
   render() {
+    
     return (
       <div className="App">
         <Dashboard />
         <L1eval />
         <Gkeval />
+      
       </div>
 
     );
