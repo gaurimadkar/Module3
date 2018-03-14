@@ -9,7 +9,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    var products = [{
+    var list = [{
       id: 1,
       name: "Amit Jadav",
       experience: 2,
@@ -107,8 +107,8 @@ class Dashboard extends Component {
     }];
     return (
       <div className= "col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={products} striped={true} hover={true} search searchPlaceholder='Search' pagination>
-          <TableHeaderColumn  hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort>Product ID</TableHeaderColumn>
+        <BootstrapTable ref="table" data={list} striped={true} hover={true} search searchPlaceholder='Search' pagination>
+          <TableHeaderColumn  hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
           <TableHeaderColumn dataField="cvlink" dataSort>CV Link</TableHeaderColumn>

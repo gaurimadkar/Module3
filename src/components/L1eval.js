@@ -12,9 +12,8 @@ class L1eval extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Name: '',
-      EvaluateSelection:['Select','Selected','Rejected'],
-      SenioritySelections: ['Select','Jr.','S.Sr','Sr.','SD.']
+      EvaluateSelection:['Select Option','Selected','Rejected'],
+      SenioritySelections: ['Select Option','Jr','S.Sr','Sr','SD']
     };
   }
 
@@ -59,7 +58,7 @@ class L1eval extends Component {
                     <Label LabelName={"Evaluate"} />
                   </div>
                   <div className="col-sm-9">
-                    <InputSelect options={this.state.EvaluateSelection} selectedOption={this.state.EvaluateSelection} />
+                  <InputSelect selectedOption={this.state.EvaluateSelection}/>
                   </div>
                 </div>
                 <div className="row">
@@ -67,7 +66,7 @@ class L1eval extends Component {
                     <Label LabelName={"Seniority"} />
                   </div>
                   <div className="col-sm-9">
-                    <InputSelect options={this.state.SenioritySelections} selectedOption={this.state.SenioritySelections} />
+                  <InputSelect selectedOption={this.state.SenioritySelections}/>
                   </div>
                 </div>
                 <div className="row">
