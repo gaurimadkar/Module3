@@ -11,7 +11,7 @@ class L1eval extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleClick}>
+      <form>
         <div className="header">
         L1
         </div>
