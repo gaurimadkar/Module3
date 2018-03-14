@@ -7,16 +7,18 @@ import Gkeval from '../src/components/Gkeval';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  
   render() {
-    
+
     return (
       <div className="App">
         <Dashboard />
-        <L1eval />
+        <L1eval/>
         <Gkeval />
-      
+
       </div>
 
     );
