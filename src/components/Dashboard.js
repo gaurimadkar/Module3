@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -12,86 +11,112 @@ class Dashboard extends Component {
   render() {
     var products = [{
       id: 1,
-      name: "Item name 1",
-      price: 100
+      name: "Amit Jadav",
+      experience: 2,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },{
       id: 2,
-      name: "Item name 2",
-      price: 100
+      name: "Pradeep",
+      experience: 7,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 3,
-      name: "Item name 3",
-      price: 100
+      name: "Yash",
+      experience: 3,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 4,
-      name: "Item name 4",
-      price: 100
+      name: "Minal",
+      experience: 5,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 5,
-      name: "Item name 5",
-      price: 100
+      name: "Harshad",
+      experience: 3,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },{
       id: 6,
-      name: "Item name 6",
-      price: 100
+      name: "Kiran",
+      experience: 4,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },{
       id: 7,
-      name: "Item name 7",
-      price: 100
+      name: "Kirti",
+      experience: 6,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'fail',
+      evaluate:'pass'
     },
     {
       id: 8,
-      name: "Item name 8",
-      price: 100
+      name: "Sumit",
+      experience: 7,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 9,
-      name: "Item name 9",
-      price: 100
+      name: "Kiran",
+      experience: 5,
+      cvlink:'www.googledrive.com/aaa',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 10,
-      name: "Item name 10",
-      price: 100
+      name: "Shruti",
+      experience: 6,
+      cvlink:'www.googledrive.com/sss',
+      evallink:'www.googledrive.com/bb',
+      l1result:'pass',
+      evaluate:'pass'
     },
     {
       id: 11,
-      name: "Item name 11",
-      price: 100
-    },{
-      id: 12,
-      name: "Item name 12",
-      price: 100
-    },
-    {
-      id: 13,
-      name: "Item name 13",
-      price: 100
-    },
-    {
-      id: 14,
-      name: "Item name 14",
-      price: 100
-    },
-    {
-      id: 15,
-      name: "Item name 15",
-      price: 100
+      name: "Amar",
+      experience: 3,
+      cvlink:'www.googledrive.com/sss',
+      evallink:'www.googledrive.com/aaa',
+      l1result:'pass',
+      evaluate:'fail'
     }];
-    // It's a data format example.
-    function priceFormatter(cell, row){
-    return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
-    }
     return (
-      <BootstrapTable ref='table' data={products} striped={true} hover={true} search searchPlaceholder='input something...' pagination>
-      <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-      <TableHeaderColumn dataField="name" dataSort={true}>Product Name</TableHeaderColumn>
-      <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
-    </BootstrapTable>
-
+      <div className= "col-md-12 demo-div heading-section">
+        <BootstrapTable ref="table" data={products} striped={true} hover={true} search searchPlaceholder='Search' pagination>
+          <TableHeaderColumn  hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort>Product ID</TableHeaderColumn>
+          <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
+          <TableHeaderColumn dataField="cvlink" dataSort>CV Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="evallink" dataSort>Evaluation Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="l1result" dataSort>L1 Result</TableHeaderColumn>
+          <TableHeaderColumn dataField="evaluate" dataSort>Evaluate</TableHeaderColumn>
+        </BootstrapTable>
+      </div>
     );
   }
 }

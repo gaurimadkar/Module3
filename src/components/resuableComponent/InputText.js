@@ -2,10 +2,10 @@ import React from 'react';
 import { Component } from 'react';
 
 
-const InputText = (props) => (  
+const InputText = (props) => (
   <div className="form-group">
     <input
-      className={"col-"+props.className}
+      className={"col-sm-"+props.className}
       type={'text'}
       placeholder={props.placeholder} />
   </div>
