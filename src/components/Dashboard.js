@@ -17,7 +17,7 @@ class Dashboard extends Component {
             <div class="col-lg-12">
               <section class="panel">
                 <header class="panel-heading">
-                  Advanced Table
+                  Advanced Tableeeee
               </header>
 
                 <table class="table table-striped table-advance table-hover">

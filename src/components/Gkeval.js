@@ -10,12 +10,10 @@ class Gkeval extends Component {
 
 
   render() {
-    return (
-      <form onSubmit={this.handleClick}>
-        <div className="header">
+    return (      
+        <div className="Gkeval">
         Gkeval
-        </div>
-      </form>
+        </div>   
 
     );
   }
