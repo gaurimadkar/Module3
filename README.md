@@ -1,4 +1,10 @@
 # Module3
+for Run Application ,
+-npm install 
+-npm Start
+
+---------------------------------------------------------------------------------------
+
 Weekend drive Evaluation
 Dashboard:							
 	Name	Yrs of Experience	CV Link	Evaluation Link	L1 Result	Evaluate	
