@@ -15,11 +15,11 @@ class L1eval extends Component {
       EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
       SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
       HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
-      //ObjL1eval =[{}]
+      // ObjL1eval =[{}],
       ObjL1eval: [{
         name: "Amit Jadav",
-        resume: "resume1",
-        evalsheet: 'www.googledrive.com/aaa',
+        // resume: "resume1",
+        // evalsheet: 'www.googledrive.com/aaa',
         hrname: 'kapil',
         evaluate: 'www.googledrive.com/aaa',
         seniority: 'sr',
@@ -28,32 +28,27 @@ class L1eval extends Component {
     };
     this.onGetdata = this.onGetdata.bind(this);
   }
-  onGetdata = () => {  
-   console.log("fullName" +this.state.fullName);
-   console.log("LastName" +this.state.LastName);
-   console.log("HrName" +this.state.HrName);
-   console.log("feedback" +this.state.feedback);
-   console.log("evallink" +this.state.evallink);
-   
-   
- 
-    // let obj = {
-    //   name: task
-
-    // };
-    // console.log(obj);
+  onGetdata = () => {
+     let obj = {
+      name: this.state.name,
+      hrname: this.state.HrName,
+      evaluate: this.state.evalSel,
+      seniority: this.state.Seniority,
+      feedback: this.state.feedback
+    }
+    console.log(obj);   
     // this.setState({
-    //   ObjL1eval: [...this.state.ObjL1eval, obj],
-    //   isCompleted: true
-    // })
+    //   ObjL1eval: [...this.state.ObjL1eval, obj]
+    // });
+    // console.log(ObjL1eval);      
   };
-
+   
   onNameChange(e) {
-    let key = e.target.name;  
-    let value =  e.target.value;
-    console.log(key,value);  
+    let key = e.target.name;
+    let value = e.target.value;
+    //  console.log(key, value);
     this.setState({
-      [key]: value, 
+      [key]: value,
     })
   }
   render() {
@@ -74,71 +69,69 @@ class L1eval extends Component {
                       <Label LabelName={"Name"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                      <InputText 
-                        onNameChange={this.onNameChange.bind(this)} 
-                        name="fullName"
-                        title={'Full name'} 
-                        PlaceHolder={"full name"}/>                    
+                      <InputText
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="name"
+                        title={'Full name'}
+                        PlaceHolder={"full name"} />
                     </div>
                   </div>
 
-                  <div className="row form_group">
-                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                      <Label LabelName={"Last Name"} />
-                    </div>
-                    <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                      <InputText 
-                        onNameChange={this.onNameChange.bind(this)} 
-                        name="LastName"
-                        title={'Full name'} 
-                        PlaceHolder={"full name"}/>                    
-                    </div>
-                  </div>
 
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"Resume"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                      <Label name="evallink" LabelName={"www.doc.in"} />
+                      <Label name="resume" LabelName={"www.doc.in"} />
                     </div>
                   </div>
-                  
+
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"Evaluation Sheet"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                      <Label LabelName={"www.eval.in"} />
+                      <Label name="evalsheet" LabelName={"www.eval.in"} />
                     </div>
                   </div>
+
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"HR Name"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                      <InputSelect 
-                      onNameChange={this.onNameChange.bind(this)} 
-                      name="HrName"
-                      selectedOption={this.state.HrNameSelections} />
+                      <InputSelect
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="HrName"
+                        selectedOption={this.state.HrNameSelections} />
                     </div>
                   </div>
+
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"Evalulate"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                      <InputSelect selectedOption={this.state.EvaluateSelection} />
+                      <InputSelect
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="evalSel"
+                        selectedOption={this.state.EvaluateSelection} />
                     </div>
                   </div>
+
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"Seniority"} />
                     </div>
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                      <InputSelect selectedOption={this.state.SenioritySelections} />
+                      <InputSelect
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="Seniority"
+                        selectedOption={this.state.SenioritySelections} />
                     </div>
                   </div>
+
                   <div className="row form_group">
                     <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                       <Label LabelName={"Feedback"} />
@@ -146,9 +139,9 @@ class L1eval extends Component {
                     <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
                       <InputTextArea
                         rows={5}
-                        placeholder={'Feedback'} 
-                        onNameChange={this.onNameChange.bind(this)} 
-                        name="feedback"/>
+                        placeholder={'Feedback'}
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="feedback" />
                     </div>
                   </div>
 
