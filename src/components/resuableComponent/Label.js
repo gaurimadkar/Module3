@@ -3,7 +3,8 @@ import { Component } from 'react';
 
 const Label = (props) => (
   <div>
-    <label>{props.LabelName}</label>
+    <label name={props.name}
+          onChange={props.onNameChange}>{props.LabelName}</label>
   </div>
 );
 

@@ -3,7 +3,7 @@ import { Component } from 'react';
 
 const TextBox = (props) => (
   <div>
-    <input  className="form-control"  type="text" placeholder={props.placeholder} />
+    <input  type="text" className="form-control"/>
   </div>
 );
 
