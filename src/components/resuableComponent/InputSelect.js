@@ -17,7 +17,7 @@ class InputSelect extends React.Component {
     return (
         <div>
           <select className="dropdown-header form-control"  name={this.props.name}
-          onChange={this.props.onNameChange} >
+          onChange={this.props.onNameChange} required>
             {data.map(option => {
               return <option value={option} key={option} >{option}</option>
             })}
