@@ -4,10 +4,10 @@ import { Component } from 'react';
 
 const InputText = (props) => (  
   <div className="form-group">
-    <input
+    {/* <input
       className={"col-"+props.className}
       type={'text'}
-      placeholder={props.placeholder} />
+      placeholder={props.placeholder} /> */}
   </div>
 );
 

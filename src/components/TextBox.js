@@ -1,21 +1,11 @@
 import React from 'react';
 import { Component } from 'react';
 
-class TextBox extends Component {
-  constructor(props) {
-    super(props);
-  }
+const TextBox = (props) => (
+  <div>
+    <input  className="form-control"  type="text" placeholder={props.placeholder} />
+  </div>
+);
 
-  render() {
-    const {className,placeholder} = this.props;
-    return (
-      <div>
-        <input type="text"
-          className={"col-" + className}
-          placeholder={placeholder} />      
-      </div>
-    );
-  }
-}
 
 export default TextBox;

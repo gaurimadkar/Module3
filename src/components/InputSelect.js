@@ -2,13 +2,12 @@ import React from 'react';
 import { Component } from 'react';
 
 
-const InputSelect = (props) => (  
-  <div className="form-group">
-    <label className="form-label">{props.title}</label>
+const InputSelect = (props) => (
+  <div>   
     <select
       name={props.name}
       value={props.selectedOption}
-      className="dropdown-header">
+      className="dropdown-header form-control">
       <option value="">{props.placeholder}</option>
       {props.options.map(opt => {
         return (
