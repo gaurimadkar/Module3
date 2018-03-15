@@ -7,11 +7,15 @@ import Label from './resuableComponent/Label';
 import DropDown from './resuableComponent/DropDown';
 import InputNumber from './resuableComponent/InputNumber';
 import Button from './resuableComponent/Button';
+import InputModal from './resuableComponent/InputModal';
+
+
 
 class Gkeval extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      objGkEval: props.data,
       EvaluateSelection:['Select Option','Selected','Rejected'],
       SenioritySelections: ['Select Option','Jr','S.Sr','Sr','SD'],
       HrNameSelections: ['Select Option','Namrata', 'Kapil', 'Sunaina']
@@ -19,8 +23,9 @@ class Gkeval extends Component {
   }
 
   render() {
-    return (
-      <div>
+    return (     
+      <div>        
+      <InputModal compName='Gkeval'  />
       <div className="L1eval">
         <div className="container">
         <div className="col-lg-12">

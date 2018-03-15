@@ -7,6 +7,7 @@ import Label from './resuableComponent/Label';
 import DropDown from './resuableComponent/DropDown';
 import InputNumber from './resuableComponent/InputNumber';
 import Button from './resuableComponent/Button';
+import InputModal from './resuableComponent/InputModal';
 
 class L1eval extends Component {
   constructor(props) {
@@ -20,7 +21,9 @@ class L1eval extends Component {
 
   render() {
     return (
+     
       <div>
+         <InputModal compName='L1eval'/>
         <div className="L1eval">
           <div className="container">
           <div className="col-lg-12">
