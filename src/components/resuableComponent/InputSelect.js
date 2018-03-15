@@ -15,8 +15,8 @@ class InputSelect extends React.Component {
   render() {
     let data = this.props.selectedOption;
     return (
-        <div className="form-group">
-          <select className="dropdown-header">
+        <div>
+          <select className="dropdown-header form-control">
             {data.map(option => {
               return <option value={option} key={option} >{option}</option>
             })}
