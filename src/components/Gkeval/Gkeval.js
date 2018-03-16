@@ -1,15 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import InputText from './resuableComponent/InputText';
-import InputSelect from './resuableComponent/InputSelect';
-import InputTextArea from './resuableComponent/InputTextArea';
-import Label from './resuableComponent/Label';
-// import DropDown from './resuableComponent/DropDown';
-import InputNumber from './resuableComponent/InputNumber';
-import Button from './resuableComponent/Button';
-import InputModal from './resuableComponent/InputModal';
-
-
+import InputText from '../resuableComponent/InputText';
+import InputSelect from '../resuableComponent/InputSelect';
+import InputTextArea from '../resuableComponent/InputTextArea';
+import Label from '../resuableComponent/Label';
+import Button from '../resuableComponent/Button';
 
 class Gkeval extends Component {
   constructor(props) {
@@ -20,12 +15,16 @@ class Gkeval extends Component {
       SenioritySelections: ['Select Option','Jr','S.Sr','Sr','SD'],
       HrNameSelections: ['Select Option','Namrata', 'Kapil', 'Sunaina']
     };
+    this.handlecloseModal = this.handlecloseModal.bind(this);
+  }
+
+  handlecloseModal() {
+    this.setState(this.state.hide);  
   }
 
   render() {
     return (     
       <div>        
-      <InputModal compName='Gkeval'  />
       <div className="L1eval">
         <div className="container">
         <div className="col-lg-12">
@@ -39,7 +38,7 @@ class Gkeval extends Component {
                   <Label LabelName={"Name"} />
                 </div>
                 <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                <InputText title={'Full name'} className={'12'}/>
+                <InputText  title={'Full name'} className={'12'}/>
                 </div>
               </div>
               <div className="row form_group">
@@ -103,8 +102,8 @@ class Gkeval extends Component {
 
               <div className="row form_group">
                 <div className="col-sm-offset-5 col-sm-7">
-                  <span><Button ButtonName={"Submit"} />
-                  </span><span className="margin-l-5"><Button ButtonName={"Cancel"} /></span>
+                  <span><Button ButtonName={"Submit"} /></span>
+                  <span className="margin-l-5"><Button ButtonName={"Cancel"} onClick ={this.handlecloseModal}  /></span>
                 </div>
               </div>
               </div>

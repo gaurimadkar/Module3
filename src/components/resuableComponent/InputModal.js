@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 import Modal from 'react-modal';
-import Gkeval from '../Gkeval';
-import L1eval from '../L1eval';
+import Gkeval from '../Gkeval/Gkeval';
+import L1eval from '../L1eval/L1eval';
 
 
 
@@ -40,10 +40,13 @@ class InputModal extends Component {
   }
 
   render() {
-      let data = (this.state.comp == 'Gkeval') ? <Gkeval/>:<L1eval/>;
+      let data = (this.state.comp === 'Gkeval') ? <L1eval/>:<Gkeval/>;
     return (
-      <div>
-         <button onClick={this.handleopenModal} id='btnopenModel' >Gk Evaluation</button>
+      <div>       
+        
+          <button onClick={this.handleopenModal} id='btnopenModel' > 
+          {this.state.comp === 'Gkeval' ? 'L1 Result' :  'Evaluate'} </button>
+       
          <Modal
           isOpen={this.state.showModal}         
           onRequestClose={this.handlecloseModal}
