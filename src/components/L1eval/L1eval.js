@@ -15,7 +15,7 @@ class L1eval extends Component {
       EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
       SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
       HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
-      formdata: [
+      formdata:
         {
           name: "Amit Jadav",
           resume: "resume1",
@@ -25,7 +25,7 @@ class L1eval extends Component {
           seniority: 'sr',
           feedback: 'pass'
         }
-      ]
+    
 
     };
     this.onGetdata = this.onGetdata.bind(this);
@@ -48,11 +48,8 @@ class L1eval extends Component {
   };
 
   onNameChange(e) {
-    let key = e.target.name;
-    let value = e.target.value;
-    //  console.log(key, value);
     this.setState({
-      [key]: value,
+      [e.target.name]: e.target.value,
     })
   }
   
