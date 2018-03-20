@@ -22,7 +22,7 @@ class L1eval extends Component {
           evalsheet: 'www.googledrive.com/aaa',
           hrname: 'kapil',
           evaluate: 'www.googledrive.com/aaa',
-          seniority: 'sr',
+          seniority: 'sr', 
           feedback: 'pass'
         }
     
