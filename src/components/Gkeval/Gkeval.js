@@ -22,22 +22,7 @@ class Gkeval extends Component {
     this.onGetdataModal = this.onGetdataModal.bind(this);
   }
 
-  onGetdataModal = (e) => {
-    let obj = {
-      name: this.state.GkModal.name,
-      selectHrname: this.state.GkModal.HrName,
-      resume: this.state.resume,
-      evalsheet: this.state.evalsheet,
-      evaluate: this.state.evalSel,
-      seniority: this.state.Seniority,
-      feedback: this.state.feedback
-    }
-    console.log(obj);
-    this.setState({
-      GkModal: [...this.state.GkModal, obj]
-    });
-    e.preventDefault();
-  };
+
 
   handlecloseModal() {
     this.setState({showmodal:false});  
