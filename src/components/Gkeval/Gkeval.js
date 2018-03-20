@@ -11,7 +11,7 @@ class Gkeval extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      objGkEval: props.data,
+
       EvaluateSelection:['Select Option','Selected','Rejected'],
       SenioritySelections: ['Select Option','Jr','S.Sr','Sr','SD'],
       HrNameSelections: ['Select Option','Namrata', 'Kapil', 'Sunaina'],
