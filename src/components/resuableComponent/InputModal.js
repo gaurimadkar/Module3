@@ -40,7 +40,7 @@ class InputModal extends Component {
   }
 
   render() {
-      let data = (this.state.comp === 'Gkeval') ? <L1eval/>:<Gkeval/>;
+      let data = (this.state.comp === 'Gkeval') ? <L1eval record={this.props.record} />:<Gkeval  record={this.props.record}  />;
     return (
       <div>       
         

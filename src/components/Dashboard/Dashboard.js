@@ -15,24 +15,15 @@ class Dashboard extends Component {
 
   
   cellButtonL1(cell, row,coloumindex, rowIndex) {
-    let theButton
-      theButton = <button style={{ backgroundColor: "none", border:"none" }}
-                       type="button"
-                       onClick={() => this.selectL1Eval(cell, row, rowIndex)}>
-                       <InputModal compName='Gkeval' />
-                   </button>     
-    return theButton
+    let btnL1Eval 
+    btnL1Eval = <InputModal compName='Gkeval' record={row} />
+    return btnL1Eval
   }
 
   cellButtonEval(cell, row,coloumindex, rowIndex) {
-    let theButton 
-      theButton = <button style={{ backgroundColor: "none", border:"none" }}
-      type="button"
-      onClick={() => this.selectL1Eval(cell, row, rowIndex)}>
-          <InputModal />
-      </button>     
-   
-    return theButton
+    let btnGkEval    
+    btnGkEval = <InputModal record={row}/>         
+    return btnGkEval
   }
   
 

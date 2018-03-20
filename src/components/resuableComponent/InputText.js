@@ -6,6 +6,7 @@ const InputText = (props) => (
     type={'text'} 
     name={props.name}
     onChange={props.onNameChange} 
+    value={props.value}
     placeholder={props.PlaceHolder} required/>
   </div>
 );
