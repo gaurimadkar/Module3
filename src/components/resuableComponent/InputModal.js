@@ -27,6 +27,9 @@ class InputModal extends Component {
 
     this.handleModalState = this.handleModalState.bind(this);
   }
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
