@@ -1,162 +1,105 @@
-import React from 'react';
-import { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import InputModal from '../resuableComponent/InputModal';
+import React from "react";
+import { Component } from "react";
+import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import InputModal from "../resuableComponent/InputModal";
+import Constants from "../../common/Constants";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.cellButtonL1 = this.cellButtonL1.bind(this);
-    this.cellButtonEval = this.cellButtonEval.bind(this);
-    this.showL1Results= false ;
-    this.showGkResults= false ;
-    
+    this.cellButton = this.cellButton.bind(this);
+    this.state = {
+      list: [],
+      isOpenModal: false,
+      selectedCandidate: {},
+      compName : null
+    };
   }
 
-  
-  cellButtonL1(cell, row,coloumindex, rowIndex) {
-    let theButton
-      theButton = <button style={{ backgroundColor: "none", border:"none" }}
-                       type="button"
-                       onClick={() => this.selectL1Eval(cell, row, rowIndex)}>
-                       <InputModal compName='Gkeval' />
-                   </button>     
-    return theButton
+  handleopenModal(row,buttonName) {
+    this.setState({ isOpenModal: true, selectedCandidate: row , compName : buttonName});
   }
 
-  cellButtonEval(cell, row,coloumindex, rowIndex) {
-    let theButton 
-      theButton = <button style={{ backgroundColor: "none", border:"none" }}
-      type="button"
-      onClick={() => this.selectL1Eval(cell, row, rowIndex)}>
-          <InputModal />
-      </button>     
-   
-    return theButton
+  handleCloseModal(row) {
+    this.setState({ isOpenModal: false, selectedCandidate: {} , compName : null});
   }
-  
 
-  selectL1Eval(cell, row, rowIndex) {
-    this.setState({ showL1Results: true });
-  }
-  render() {
-
-    var list = [{
-      id: 1,
-      name: "Amit Jadav",
-      experience: 2,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },{
-      id: 2,
-      name: "Pradeep",
-      experience: 7,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 3,
-      name: "Yash",
-      experience: 3,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 4,
-      name: "Minal",
-      experience: 5,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 5,
-      name: "Harshad",
-      experience: 3,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },{
-      id: 6,
-      name: "Kiran",
-      experience: 4,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },{
-      id: 7,
-      name: "Kirti",
-      experience: 6,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'fail',
-      evaluate:'pass'
-    },
-    {
-      id: 8,
-      name: "Sumit",
-      experience: 7,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 9,
-      name: "Kiran",
-      experience: 5,
-      cvlink:'www.googledrive.com/aaa',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 10,
-      name: "Shruti",
-      experience: 6,
-      cvlink:'www.googledrive.com/sss',
-      evallink:'www.googledrive.com/bb',
-      l1result:'pass',
-      evaluate:'pass'
-    },
-    {
-      id: 11,
-      name: "Amar",
-      experience: 3,
-      cvlink:'www.googledrive.com/sss',
-      evallink:'www.googledrive.com/aaa',
-      l1result:'pass',
-      evaluate:'fail'
-    }];
-
-    
+  cellButton(cell, row, coloumindex, rowIndex) {
+    const buttonName = row.l1result === "pass" ? "GK" : "L1";
     return (
+      <button onClick={() => this.handleopenModal(row,buttonName)} id="btnopenModel">
+        {buttonName}
+      </button>
+    );
+  }
 
-      
-      <div className= "col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={list} striped={true} hover={true} search searchPlaceholder='Search' 
-        options={ this.options }  pagination>
-          <TableHeaderColumn  hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
-          <TableHeaderColumn dataField="cvlink" dataSort>CV Link</TableHeaderColumn>
-          <TableHeaderColumn dataField="evallink" dataSort>Evaluation Link</TableHeaderColumn>
-          <TableHeaderColumn dataField="l1result" dataFormat={this.cellButtonL1} dataSort>L1 Result</TableHeaderColumn>
-          <TableHeaderColumn dataField="evaluate" dataFormat={this.cellButtonEval} dataSort>Evaluate</TableHeaderColumn>
+  componentDidMount = () => {
+    let URL = Constants.URL;
+    var self = this;
+    fetch(URL)
+      .then(function(response) {
+        let myData = response.json();
+        return myData;
+      })
+      .then(function(json) {
+        self.setState({ list: json });
+      });
+  };
+
+  render() {
+     return (
+      <div className="col-md-12 demo-div heading-section">
+        <BootstrapTable
+          ref="table"
+          data={this.state.list}
+          striped={true}
+          hover={true}
+          search
+          searchPlaceholder="Search"
+          pagination
+        >
+          <TableHeaderColumn
+            hidden={true}
+            dataField="id"
+            isKey
+            dataAlign="center"
+            dataSort
+          >
+            Product ID
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="name" dataSort>
+            Name
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="experience" dataSort>
+            Yrs of Experience
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="cvlink" dataSort>
+            CV Link
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="evallink" dataSort>
+            Evaluation Link
+          </TableHeaderColumn>
+          <TableHeaderColumn
+            dataField="l1result"
+            dataFormat={this.cellButton}
+            dataSort
+          >
+            L1 Result
+          </TableHeaderColumn>
+          <TableHeaderColumn
+            dataField="evaluate"
+            dataFormat={this.cellButton}
+            dataSort
+          >
+            Evaluate
+          </TableHeaderColumn>
         </BootstrapTable>
-          
-        {/* { this.state.showL1Results && <InputModal/>  }  
-        { this.state.showGkResults ? <InputModal compname='Gkeval' /> : null }   */}
-
+        <InputModal
+          modalIsOpen={this.state.isOpenModal}
+          compName={this.state.compName}
+          data={this.state.selectedCandidate}
+          handleCloseModal={this.handleCloseModal.bind(this)}
+        />
       </div>
     );
   }

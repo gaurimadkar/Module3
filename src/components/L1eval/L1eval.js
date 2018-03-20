@@ -25,10 +25,11 @@ class L1eval extends Component {
           seniority: 'sr',
           feedback: 'pass'
         }
-    
+
 
     };
     this.onGetdata = this.onGetdata.bind(this);
+    
   }
   onGetdata = (e) => {
     let obj = {
@@ -45,6 +46,7 @@ class L1eval extends Component {
       formdata: [...this.state.formdata, obj]
     });
     e.preventDefault();
+  
   };
 
   onNameChange(e) {
@@ -52,9 +54,9 @@ class L1eval extends Component {
       [e.target.name]: e.target.value,
     })
   }
-  
+
   render() {
-    
+
     return (
       <div>
         <div className="L1eval">
@@ -67,7 +69,7 @@ class L1eval extends Component {
 
                 <div className="panel-body">
 
-                  <form data-toggle="validator" role="form"  onSubmit={this.onGetdata}>
+                  <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
 
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -160,10 +162,10 @@ class L1eval extends Component {
                       </div>
                     </div>
 
-                 </form>
+                  </form>
                 </div>
 
-               
+
 
               </section>
             </div>

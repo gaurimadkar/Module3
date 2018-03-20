@@ -1,21 +1,19 @@
-import React from 'react';
-import { Component } from 'react';
-import Modal from 'react-modal';
-import Gkeval from '../Gkeval/Gkeval';
-import L1eval from '../L1eval/L1eval';
-
-
+import React from "react";
+import { Component } from "react";
+import Modal from "react-modal";
+import Gkeval from "../Gkeval/Gkeval";
+import L1eval from "../L1eval/L1eval";
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    width                 : '68%',
-    border                : 'none'
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "68%",
+    border: "none"
   }
 };
 
@@ -23,39 +21,36 @@ class InputModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       modalIsOpen: false,
-       comp: props.compName
+      modalIsOpen: false,
+      comp: props.compName
     };
 
-    this.handleopenModal = this.handleopenModal.bind(this);   
-    this.handlecloseModal = this.handlecloseModal.bind(this);
+    this.handleModalState = this.handleModalState.bind(this);
   }
 
-  handleopenModal() {
-    this.setState({showModal: true});   
+  componentWillReceiveProps(nextProps) {
+    if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
+      this.handleModalState();
+    }
   }
-  
-  handlecloseModal() {
-    this.setState({showModal: false});  
+
+  handleModalState() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
-      let data = (this.state.comp === 'Gkeval') ? <L1eval/>:<Gkeval/>;
+    let data = this.state.comp === "GK" ? <Gkeval /> : <L1eval />;
     return (
-      <div>       
-        
-          <button onClick={this.handleopenModal} id='btnopenModel' > 
-          {this.state.comp === 'Gkeval' ? 'L1 Result' :  'Evaluate'} </button>
-       
-         <Modal
-          isOpen={this.state.showModal}         
-          onRequestClose={this.handlecloseModal}
-          style={customStyles}
-          contentLabel="Modal">    
-          {data}                
-        </Modal>
+      <div>
+      <Modal
+        isOpen={this.state.showModal}
+        onRequestClose={this.props.handleCloseModal}
+        style={customStyles}
+        contentLabel="Modal"
+      >
+        {data}
+      </Modal>
       </div>
-    
     );
   }
 }
