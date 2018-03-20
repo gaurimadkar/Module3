@@ -1,12 +1,7 @@
 import React from 'react';
-import { Component } from 'react';
 
 class InputSelect extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  onChange(e) {
+   onChange(e) {
     this.setState({
       value: e.target.value
     })

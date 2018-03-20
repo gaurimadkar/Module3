@@ -1,6 +1,4 @@
 import React from 'react';
-import { Component } from 'react';
-
 
 const InputText = (props) => (
   <div className="form-group">

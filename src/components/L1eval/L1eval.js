@@ -32,7 +32,6 @@ class L1eval extends Component {
     
   }
   onGetdata = (e) => {
-    console.log("1" + e.target.value);
     let obj = {
       name: this.state.name,
       hrname: this.state.HrName,
