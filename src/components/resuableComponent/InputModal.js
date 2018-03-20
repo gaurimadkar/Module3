@@ -23,37 +23,37 @@ class InputModal extends Component {
     this.state = {
       modalIsOpen: false,
       compName: props.compName,
-      data : null
+      data: null
     };
-
     this.handleModalState = this.handleModalState.bind(this);
   }
   componentWillMount() {
     Modal.setAppElement('body');
   }
-
+  dataToInputModal = (obj) => {
+    // console.log("received data to inputmodal", obj);
+    this.props.transferDataToDashboard(obj);
+  }
   componentWillReceiveProps(nextProps) {
     if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
       this.handleModalState(nextProps);
     }
   }
-
   handleModalState(nextProps) {
-    this.setState({ showModal: !this.state.showModal, compName  : nextProps.compName, data : nextProps.data });
+    this.setState({ showModal: !this.state.showModal, compName: nextProps.compName, data: nextProps.data });
   }
-
   render() {
-    let data = this.state.compName === "GK" ? <Gkeval data={this.state.data}/> : <L1eval data={this.state.data} />;
+    let data = this.state.compName === "GK" ? <Gkeval data={this.state.data} /> : <L1eval data={this.state.data} transferDataToInputModal={this.dataToInputModal.bind(this)} />;
     return (
       <div>
-      <Modal
-        isOpen={this.state.showModal}
-        onRequestClose={this.props.handleCloseModal}
-        style={customStyles}
-        contentLabel="Modal"
-      >
-        {data}
-      </Modal>
+        <Modal
+          isOpen={this.state.showModal}
+          onRequestClose={this.props.handleCloseModal}
+          style={customStyles}
+          contentLabel="Modal"
+        >
+          {data}
+        </Modal>
       </div>
     );
   }

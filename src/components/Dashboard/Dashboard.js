@@ -13,48 +13,73 @@ class Dashboard extends Component {
       list: [],
       isOpenModal: false,
       selectedCandidate: {},
-      compName : null
+      compName: null
     };
   }
 
-  handleopenModal(row,buttonName) {
-    this.setState({ isOpenModal: true, selectedCandidate: row , compName : buttonName});
+  handleopenModal(row, buttonName) {
+    this.setState({ isOpenModal: true, selectedCandidate: row, compName: buttonName });
   }
 
   handleCloseModal(row) {
-    this.setState({ isOpenModal: false, selectedCandidate: {} , compName : null});
+    this.setState({ isOpenModal: false, selectedCandidate: {}, compName: null });
   }
 
   cellButtonForL1(cell, row) {
     return (
-      <button onClick={() => this.handleopenModal(row,'L1')} id="btnopenModel">
+      <button className="btn" onClick={() => this.handleopenModal(row, 'L1')} id="btnopenModelL1">
         L1
       </button>
     );
   }
   cellButtonForGK(cell, row) {
     return (
-      <button onClick={() => this.handleopenModal(row,'GK')} id="btnopenModel">
+      <button className="btn" onClick={() => this.handleopenModal(row, 'GK')} id="btnopenModelGK">
         GK
       </button>
     );
   }
+  dataToDashboard = (recivedObjData) => {
+    this.setState({
+      formdata: [...this.state.list, recivedObjData]
+    });
+    console.log("recivedObjData", recivedObjData);
+    let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
+    updateRowData.evaluateresult = recivedObjData.evaluateresult;
+    updateRowData.seniority =  recivedObjData.seniority;
+    updateRowData.feedback= recivedObjData.feedback;
+   // console.log("updateRowData", updateRowData);  
 
+    let elementL1 = document.getElementById('btnopenModelL1'); 
+    let elementGK = document.getElementById('btnopenModelGK');
+
+    if(updateRowData.evaluateresult=="Selected"){
+    //  alert("1");
+      elementL1.className= 'btnGreen'; 
+    }else{
+    //  alert("2");
+      elementL1.className= 'btnRed'; 
+      elementGK.className= 'btnRed'; 
+    }
+
+  }
+  
   componentDidMount = () => {
     let URL = Constants.URL;
     var self = this;
     fetch(URL)
-      .then(function(response) {
+      .then(function (response) {
         let myData = response.json();
         return myData;
       })
-      .then(function(json) {
+      .then(function (json) {
         self.setState({ list: json });
       });
   };
 
   render() {
-     return (
+    
+    return (
       <div className="col-md-12 demo-div heading-section">
         <BootstrapTable
           ref="table"
@@ -100,12 +125,16 @@ class Dashboard extends Component {
           >
             Evaluate
           </TableHeaderColumn>
-        </BootstrapTable>
+
+
+
+        </BootstrapTable>      
         <InputModal
           modalIsOpen={this.state.isOpenModal}
           compName={this.state.compName}
           data={this.state.selectedCandidate}
           handleCloseModal={this.handleCloseModal.bind(this)}
+          transferDataToDashboard={this.dataToDashboard.bind(this)}
         />
       </div>
     );

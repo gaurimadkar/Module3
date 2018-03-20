@@ -4,9 +4,8 @@ import InputText from '../resuableComponent/InputText';
 import InputSelect from '../resuableComponent/InputSelect';
 import InputTextArea from '../resuableComponent/InputTextArea';
 import Label from '../resuableComponent/Label';
-import InputNumber from '../resuableComponent/InputNumber';
 import Button from '../resuableComponent/Button';
-import InputFile from '../resuableComponent/InputFile';
+
 
 class L1eval extends Component {
   constructor(props) {
@@ -14,39 +13,24 @@ class L1eval extends Component {
     this.state = {
       EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
       SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
-      HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
-      formdata:
-        {
-          name: "Amit Jadav",
-          resume: "resume1",
-          evalsheet: 'www.googledrive.com/aaa',
-          hrname: 'kapil',
-          evaluate: 'www.googledrive.com/aaa',
-          seniority: 'sr',
-          feedback: 'pass'
-        }
-
-
+      HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],  
     };
     this.onGetdata = this.onGetdata.bind(this);
-    
+    //console.log(this.props);
+   
+
   }
   onGetdata = (e) => {
-    let obj = {
-      name: this.state.name,
-      hrname: this.state.HrName,
-      resume: this.state.resume,
-      evalsheet: this.state.evalsheet,
-      evaluate: this.state.evalSel,
+    let obj = {     
+      evaluateresult: this.state.evalSel,
       seniority: this.state.Seniority,
-      feedback: this.state.feedback
+      feedback: this.state.feedback,
+      id: this.props.data.id
     }
-    console.log(obj);
-    this.setState({
-      formdata: [...this.state.formdata, obj]
-    });
+    // console.log("L1obj", obj);
+    this.props.transferDataToInputModal(obj);
     e.preventDefault();
-  
+
   };
 
   onNameChange(e) {
@@ -70,17 +54,13 @@ class L1eval extends Component {
                 <div className="panel-body">
 
                   <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
-
+                    <input type="hidden"  name="id" value={this.props.data.id}/>
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Name"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                        <InputText
-                          onNameChange={this.onNameChange.bind(this)}
-                          name="name"
-                          title={'Full name'}
-                          PlaceHolder={"Enter Name"} />
+                        <p>{this.props.data.name}</p>
                       </div>
                     </div>
 
@@ -90,8 +70,7 @@ class L1eval extends Component {
                         <Label LabelName={"Resume"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputFile name="resume" onNameChange={this.onNameChange.bind(this)} />
-                        {/* <Label name="resume" LabelName={"www.doc.in"} /> */}
+                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.cvlink}</a></p>
                       </div>
                     </div>
 
@@ -100,7 +79,7 @@ class L1eval extends Component {
                         <Label LabelName={"Evaluation Sheet"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputFile name="evalsheet" onNameChange={this.onNameChange.bind(this)} />
+                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.evallink}</a></p>
                       </div>
                     </div>
 
@@ -109,10 +88,7 @@ class L1eval extends Component {
                         <Label LabelName={"HR Name"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect
-                          onNameChange={this.onNameChange.bind(this)}
-                          name="HrName"
-                          selectedOption={this.state.HrNameSelections} />
+                        <p>{this.props.data.hrname}</p>
                       </div>
                     </div>
 
