@@ -7,7 +7,8 @@ import Constants from "../../common/Constants";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.cellButton = this.cellButton.bind(this);
+    this.cellButtonForL1 = this.cellButtonForL1.bind(this);
+    this.cellButtonForGK = this.cellButtonForGK.bind(this);
     this.state = {
       list: [],
       isOpenModal: false,
@@ -24,11 +25,17 @@ class Dashboard extends Component {
     this.setState({ isOpenModal: false, selectedCandidate: {} , compName : null});
   }
 
-  cellButton(cell, row, coloumindex, rowIndex) {
-    const buttonName = row.l1result === "pass" ? "GK" : "L1";
+  cellButtonForL1(cell, row) {
     return (
-      <button onClick={() => this.handleopenModal(row,buttonName)} id="btnopenModel">
-        {buttonName}
+      <button onClick={() => this.handleopenModal(row,'L1')} id="btnopenModel">
+        L1
+      </button>
+    );
+  }
+  cellButtonForGK(cell, row) {
+    return (
+      <button onClick={() => this.handleopenModal(row,'GK')} id="btnopenModel">
+        GK
       </button>
     );
   }
@@ -81,14 +88,14 @@ class Dashboard extends Component {
           </TableHeaderColumn>
           <TableHeaderColumn
             dataField="l1result"
-            dataFormat={this.cellButton}
+            dataFormat={this.cellButtonForL1}
             dataSort
           >
             L1 Result
           </TableHeaderColumn>
           <TableHeaderColumn
             dataField="evaluate"
-            dataFormat={this.cellButton}
+            dataFormat={this.cellButtonForGK}
             dataSort
           >
             Evaluate

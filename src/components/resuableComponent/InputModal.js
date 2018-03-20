@@ -22,7 +22,8 @@ class InputModal extends Component {
     super(props);
     this.state = {
       modalIsOpen: false,
-      comp: props.compName
+      compName: props.compName,
+      data : null
     };
 
     this.handleModalState = this.handleModalState.bind(this);
@@ -33,16 +34,16 @@ class InputModal extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
-      this.handleModalState();
+      this.handleModalState(nextProps);
     }
   }
 
-  handleModalState() {
-    this.setState({ showModal: !this.state.showModal });
+  handleModalState(nextProps) {
+    this.setState({ showModal: !this.state.showModal, compName  : nextProps.compName, data : nextProps.data });
   }
 
   render() {
-    let data = this.state.comp === "GK" ? <Gkeval /> : <L1eval />;
+    let data = this.state.compName === "GK" ? <Gkeval data={this.state.data}/> : <L1eval data={this.state.data} />;
     return (
       <div>
       <Modal
