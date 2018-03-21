@@ -6,54 +6,53 @@ import L1eval from "../L1eval/L1eval";
 
 const customStyles = {
   content: {
-    top: "50%",
+    top: "70%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "68%",
-    border: "none"
+    border: "none",
+    border:"1px solid rgba(0,0,0,.2)",
+    padding:"0",
+    margin:"0"
   }
 };
 
 class InputModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modalIsOpen: false,
-      compName: props.compName,
-      data : null
+    this.state = {    
     };
-
     this.handleModalState = this.handleModalState.bind(this);
   }
   componentWillMount() {
     Modal.setAppElement('body');
   }
-
+  dataToInputModal = (obj) => {   
+    this.props.transferDataToDashboard(obj);
+  }
   componentWillReceiveProps(nextProps) {
     if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
       this.handleModalState(nextProps);
     }
   }
-
   handleModalState(nextProps) {
-    this.setState({ showModal: !this.state.showModal, compName  : nextProps.compName, data : nextProps.data });
+    this.setState({ showModal: !this.state.showModal, compName: nextProps.compName, data: nextProps.data });
   }
-
   render() {
-    let data = this.state.compName === "GK" ? <Gkeval data={this.state.data}/> : <L1eval data={this.state.data} />;
+    let data = this.state.compName === "GK" ? <Gkeval data={this.state.data} handleCloseModal={this.props.handleCloseModal}/> : <L1eval data={this.state.data} handleCloseModal={this.props.handleCloseModal} transferDataToInputModal={this.dataToInputModal.bind(this)} />;
     return (
       <div>
-      <Modal
-        isOpen={this.state.showModal}
-        onRequestClose={this.props.handleCloseModal}
-        style={customStyles}
-        contentLabel="Modal"
-      >
-        {data}
-      </Modal>
+        <Modal
+          isOpen={this.state.showModal}
+          onRequestClose={this.props.handleCloseModal}        
+          style={customStyles}
+          contentLabel="Modal"
+        >
+          {data}
+        </Modal>
       </div>
     );
   }
