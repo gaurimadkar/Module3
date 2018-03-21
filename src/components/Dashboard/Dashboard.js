@@ -3,6 +3,8 @@ import { Component } from "react";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 import InputModal from "../resuableComponent/InputModal";
 import Constants from "../../common/Constants";
+import L1eval from "../L1eval/L1eval";
+import Gkeval from "../Gkeval/Gkeval";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -14,8 +16,7 @@ class Dashboard extends Component {
       isOpenModal: false,
       selectedCandidate: {},
       compName: null
-    };
-    let a = this.setState;
+    };   
   }
 
   handleopenModal(row, buttonName) {
@@ -26,11 +27,11 @@ class Dashboard extends Component {
     this.setState({ isOpenModal: false, selectedCandidate: {}, compName: null });
   }
 
-  cellButtonForL1(cell, row) {
+  cellButtonForL1(cell, row) {   
     return (
       <button className="btn" onClick={() => this.handleopenModal(row, 'L1')} id="btnopenModelL1">
         L1
-      </button>
+      </button>     
     );
   }
 
@@ -48,18 +49,18 @@ class Dashboard extends Component {
     });
     let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
     updateRowData.evaluateresult = recivedObjData.evaluateresult;
-    updateRowData.seniority =  recivedObjData.seniority;
-    updateRowData.feedback= recivedObjData.feedback;
-    updateRowData.l1result= recivedObjData.l1result;
-    updateRowData.evaluate= recivedObjData.evaluate;
+    updateRowData.seniority = recivedObjData.seniority;
+    updateRowData.feedback = recivedObjData.feedback;
+    updateRowData.l1result = recivedObjData.l1result;
+    updateRowData.evaluate = recivedObjData.evaluate;
     let elementL1 = document.getElementById('btnopenModelL1');
     let elementGK = document.getElementById('btnopenModelGK');
 
-    if(updateRowData.evaluateresult=="Selected"){
-      elementL1.className= 'btnGreen';
-    }else{
-      elementL1.className= 'btnRed';
-      elementGK.className= 'btnRed';
+    if (updateRowData.evaluateresult == "Selected") {
+      elementL1.className = 'btnGreen';
+    } else {
+      elementL1.className = 'btnRed';
+      elementGK.className = 'btnRed';
     }
   }
 
@@ -79,7 +80,7 @@ class Dashboard extends Component {
   render() {
     var self = this;
     const options = {
-      onRowClick: function(row) {
+      onRowClick: function (row) {
         // if(row.l1result && !row.evaluate){
         //   self.handleopenModal(row, 'L1');
         // }else if(row.l1result && row.evaluate){
@@ -89,7 +90,7 @@ class Dashboard extends Component {
     };
     return (
       <div className="col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={this.state.list} striped={true}hover={true}search searchPlaceholder="Search" pagination options={options}>
+        <BootstrapTable ref="table" data={this.state.list} striped={true} hover={true} search searchPlaceholder="Search" pagination options={options}>
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
@@ -100,7 +101,8 @@ class Dashboard extends Component {
         </BootstrapTable>
         <InputModal modalIsOpen={this.state.isOpenModal} compName={this.state.compName} data={this.state.selectedCandidate} handleCloseModal={this.handleCloseModal.bind(this)}
           transferDataToDashboard={this.dataToDashboard.bind(this)}
-        />
+        />     
+        
       </div>
     );
   }
