@@ -19,13 +19,14 @@ class L1eval extends Component {
   }
 
   onGetdata = (e) => {
+
     let obj = {
       evaluateresult: this.state.evalSel,
       seniority: this.state.Seniority,
       feedback: this.state.feedback,
       id: this.props.data.id,
-      l1result: true,
-      evaluate: true
+      l1result: this.state.evalSel,
+      evaluate: this.state.evalSel
     }
     this.props.transferDataToInputModal(obj);
     e.preventDefault();
@@ -95,7 +96,7 @@ class L1eval extends Component {
                         <Label LabelName={"Evalulate"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect selectedValue={this.props.data.evaluate}
+                        <InputSelect selectedValue={this.props.data.l1evaluate}
                           onNameChange={this.onNameChange.bind(this)}
                           name="evalSel"
                           selectedOption={this.state.EvaluateSelection} />

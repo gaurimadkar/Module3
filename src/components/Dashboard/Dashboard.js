@@ -15,7 +15,6 @@ class Dashboard extends Component {
       selectedCandidate: {},
       compName: null
     };
-    let a = this.setState;
   }
 
   handleopenModal(row, buttonName) {
@@ -27,19 +26,17 @@ class Dashboard extends Component {
   }
 
   cellButtonForL1(cell, row) {
-    return (
-      <button className="btn" onClick={() => this.handleopenModal(row, 'L1')} id="btnopenModelL1">
-        L1
-      </button>
-    );
+    if(row.l1evaluate === "Rejected" || row.l1evaluate === "Selected"){
+      return <label>{row.l1evaluate}</label>;
+    }else{
+      return <button onClick={() => this.handleopenModal(row, 'L1')}>Fill L1 Form</button>;
+    }
   }
 
   cellButtonForGK(cell, row) {
-    return (
-      <button className="btn" onClick={() => this.handleopenModal(row, 'GK')} id="btnopenModelGK">
-        GK
-      </button>
-    );
+    if(row.l1evaluate === "Selected"){
+      return <button onClick={() => this.handleopenModal(row, 'GK')}>Fill GK Form</button>;
+    }
   }
 
   dataToDashboard = (recivedObjData) => {
@@ -52,15 +49,6 @@ class Dashboard extends Component {
     updateRowData.feedback= recivedObjData.feedback;
     updateRowData.l1result= recivedObjData.l1result;
     updateRowData.evaluate= recivedObjData.evaluate;
-    let elementL1 = document.getElementById('btnopenModelL1');
-    let elementGK = document.getElementById('btnopenModelGK');
-
-    if(updateRowData.evaluateresult=="Selected"){
-      elementL1.className= 'btnGreen';
-    }else{
-      elementL1.className= 'btnRed';
-      elementGK.className= 'btnRed';
-    }
   }
 
   componentDidMount = () => {
@@ -77,19 +65,9 @@ class Dashboard extends Component {
   };
 
   render() {
-    var self = this;
-    const options = {
-      onRowClick: function(row) {
-        // if(row.l1result && !row.evaluate){
-        //   self.handleopenModal(row, 'L1');
-        // }else if(row.l1result && row.evaluate){
-        //   self.handleopenModal(row, 'GK');
-        // }
-      }
-    };
     return (
       <div className="col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={this.state.list} striped={true}hover={true}search searchPlaceholder="Search" pagination options={options}>
+        <BootstrapTable ref="table" data={this.state.list} striped={true}hover={true}search searchPlaceholder="Search" pagination>
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
