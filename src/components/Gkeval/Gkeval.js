@@ -24,8 +24,8 @@ class Gkeval extends Component {
   }
 
   render() {
-    return (     
-      <div>        
+    return (
+      <div>
       <div className='L1eval'>
         <div className='container'>
         <div className='col-lg-12'>
@@ -44,12 +44,10 @@ class Gkeval extends Component {
               </div>
               <div className='row form_group'>
                 <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={
-      'L1 Evaluation'} />
+                  <Label LabelName={'L1 Evaluation'} />
                 </div>
                 <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10'>
-                <Label LabelName={
-      'L1 Evaluation result'} />
+                <Label LabelName={'L1 Evaluation result'} />
                 </div>
               </div>
               <div className="row form_group">
@@ -62,12 +60,10 @@ class Gkeval extends Component {
               </div>
               <div className='row form_group'>
                 <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={
-      'Evaluation Sheet'} />
+                  <Label LabelName={'Evaluation Sheet'} />
                 </div>
                 <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <Label LabelName={
-      'www.eval.in'} />
+                  <Label LabelName={'www.eval.in'} />
                 </div>
               </div>
               <div className="row form_group">
@@ -80,12 +76,10 @@ class Gkeval extends Component {
               </div>
               <div className='row form_group'>
                 <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={
-      'Evalulate'} />
+                  <Label LabelName={'Evalulate'} />
                 </div>
                 <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <InputSelect selectedOption={
-      this.state.EvaluateSelection}/>
+                  <InputSelect selectedOption={this.state.EvaluateSelection}/>
                 </div>
               </div>
               <div className="row form_group">
@@ -98,25 +92,18 @@ class Gkeval extends Component {
               </div>
               <div className='row form_group'>
                 <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={
-      'Feedback'} />
+                  <Label LabelName={'Feedback'} />
                 </div>
                 <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <InputTextArea
-    rows = {5} placeholder =
-    {
-      'Feedback'
-    } />
+                  <InputTextArea rows = {5}/>
                 </div >
-        </div>
-
+              </div>
               <div className="row form_group">
                 <div className="col-sm-offset-5 col-sm-7">
-                  <span><Button ButtonName={"Submit"} />
-        </span>
-                  <span className="margin-l-5"><Button ButtonName={"Cancel"} onClick ={this.handlecloseModal}  />
-        </span>
-                </div></div>
+                  <span><Button ButtonName={"Submit"}/></span>
+                  <span className="margin-l-5"><Button ButtonName={"Cancel"} onClick ={this.handlecloseModal}/></span>
+                </div>
+              </div>
               </div>
         </section>
       </div></div>

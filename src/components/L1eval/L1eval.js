@@ -13,24 +13,22 @@ class L1eval extends Component {
     this.state = {
       EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
       SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
-      HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],  
+      HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
     };
     this.onGetdata = this.onGetdata.bind(this);
-    //console.log(this.props);
-   
-
   }
+
   onGetdata = (e) => {
-    let obj = {     
+    let obj = {
       evaluateresult: this.state.evalSel,
       seniority: this.state.Seniority,
       feedback: this.state.feedback,
-      id: this.props.data.id
+      id: this.props.data.id,
+      l1result: true,
+      evaluate: true
     }
-    // console.log("L1obj", obj);
     this.props.transferDataToInputModal(obj);
     e.preventDefault();
-
   };
 
   onNameChange(e) {
@@ -40,7 +38,6 @@ class L1eval extends Component {
   }
 
   render() {
-
     return (
       <div>
         <div className="L1eval">
@@ -50,9 +47,7 @@ class L1eval extends Component {
                 <header className="panel-heading">
                   L1 Evaluation form:
                 </header>
-
                 <div className="panel-body">
-
                   <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
                     <input type="hidden"  name="id" value={this.props.data.id}/>
                     <div className="row form_group">
@@ -63,8 +58,6 @@ class L1eval extends Component {
                         <p>{this.props.data.name}</p>
                       </div>
                     </div>
-
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Resume"} />
@@ -73,7 +66,6 @@ class L1eval extends Component {
                         <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.cvlink}</a></p>
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Evaluation Sheet"} />
@@ -82,7 +74,6 @@ class L1eval extends Component {
                         <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.evallink}</a></p>
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"HR Name"} />
@@ -91,7 +82,6 @@ class L1eval extends Component {
                         <p>{this.props.data.hrname}</p>
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Evalulate"} />
@@ -103,7 +93,6 @@ class L1eval extends Component {
                           selectedOption={this.state.EvaluateSelection} />
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Seniority"} />
@@ -115,7 +104,6 @@ class L1eval extends Component {
                           selectedOption={this.state.SenioritySelections} />
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Feedback"} />
@@ -123,26 +111,19 @@ class L1eval extends Component {
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
                         <InputTextArea
                           rows={5}
-                          placeholder={'Feedback'}
                           onNameChange={this.onNameChange.bind(this)}
                           name="feedback" />
                       </div>
                     </div>
-
                     <div className="row form_group">
                       <div className="col-sm-offset-5 col-sm-7">
                         <span>
-                          {/* <Button ButtonName={"Submit"}  onClick={() => this.onGetdata()} /> */}
-                          <button type="submit" className="btn btn-primary">Submitt</button>
-                        </span><span className="margin-l-5"><Button ButtonName={"Cancel"} /></span>
+                          <button type="submit" className="btn btn-primary">Submit</button>
+                        </span><span className="margin-l-5"><Button  ButtonName={"Cancel"} /></span>
                       </div>
                     </div>
-
                   </form>
                 </div>
-
-
-
               </section>
             </div>
           </div>
