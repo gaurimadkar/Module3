@@ -84,10 +84,18 @@ class L1eval extends Component {
                     </div>
                     <div className="row form_group">
                       <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Testscore"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <span>11</span>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <Label LabelName={"Evalulate"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect
+                        <InputSelect selectedValue={this.props.data.evaluate}
                           onNameChange={this.onNameChange.bind(this)}
                           name="evalSel"
                           selectedOption={this.state.EvaluateSelection} />
@@ -98,7 +106,7 @@ class L1eval extends Component {
                         <Label LabelName={"Seniority"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect
+                        <InputSelect selectedValue={this.props.data.seniority}
                           onNameChange={this.onNameChange.bind(this)}
                           name="Seniority"
                           selectedOption={this.state.SenioritySelections} />
@@ -109,7 +117,7 @@ class L1eval extends Component {
                         <Label LabelName={"Feedback"} />
                       </div>
                       <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputTextArea
+                        <InputTextArea setValue={this.props.data.feedback}
                           rows={5}
                           onNameChange={this.onNameChange.bind(this)}
                           name="feedback" />

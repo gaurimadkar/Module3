@@ -17,6 +17,26 @@ class Gkeval extends Component {
       HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina']
     };
     this.handlecloseModal = this.handlecloseModal.bind(this);
+    this.onGetdata = this.onGetdata.bind(this);
+  }
+
+  onGetdata = (e) => {
+    let obj = {
+      evaluateresult: this.state.evalSel,
+      seniority: this.state.Seniority,
+      feedback: this.state.feedback,
+      id: this.props.data.id,
+      l1result: true,
+      evaluate: true
+    }
+    this.props.transferDataToInputModal(obj);
+    e.preventDefault();
+  };
+
+  onNameChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
   }
 
   handlecloseModal() {
@@ -26,88 +46,111 @@ class Gkeval extends Component {
   render() {
     return (
       <div>
-      <div className='L1eval'>
-        <div className='container'>
-        <div className='col-lg-12'>
-          <section className='panel'>
-            <header className='panel-heading'>
-            GK Evaluation form:
-            </header>
-            <div className="panel-body">
-              <div className="row form_group">
-                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                  <Label LabelName={"Name"} />
+        <div className="L1eval">
+          <div className="container">
+            <div className="col-lg-12">
+              <section className="panel">
+                <header className="panel-heading">
+                GK Evaluation form:
+                </header>
+                <div className="panel-body">
+                  <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
+                    <input type="hidden"  name="id" value={this.props.data.id}/>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Name"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
+                        <p>{this.props.data.name}</p>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"L1 Evaluation"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
+                      <Label LabelName={"Selected"} />
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Resume"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.cvlink}</a></p>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Evaluation Sheet"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.evallink}</a></p>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"HR Name"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <p>{this.props.data.hrname}</p>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Testscore"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <span>11</span>
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Evalulate"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <InputSelect selectedValue={this.props.data.evaluate}
+                          onNameChange={this.onNameChange.bind(this)}
+                          name="evalSel"
+                          selectedOption={this.state.EvaluateSelection} />
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Seniority"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <InputSelect selectedValue={this.props.data.seniority}
+                          onNameChange={this.onNameChange.bind(this)}
+                          name="Seniority"
+                          selectedOption={this.state.SenioritySelections} />
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <Label LabelName={"Feedback"} />
+                      </div>
+                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                        <InputTextArea setValue={this.props.data.feedbackGK}
+                          rows={5}
+                          onNameChange={this.onNameChange.bind(this)}
+                          name="feedback" />
+                      </div>
+                    </div>
+                    <div className="row form_group">
+                      <div className="col-sm-offset-5 col-sm-7">
+                        <span>
+                          <button type="submit" className="btn btn-primary">Submit</button>
+                        </span><span className="margin-l-5"><Button  ButtonName={"Cancel"} /></span>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-                <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                <InputText  title={'Full name'} className={'12'}/>
-                </div>
-              </div>
-              <div className='row form_group'>
-                <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={'L1 Evaluation'} />
-                </div>
-                <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10'>
-                <Label LabelName={'L1 Evaluation result'} />
-                </div>
-              </div>
-              <div className="row form_group">
-                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                  <Label LabelName={"Resume"} />
-                </div>
-                <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                  <Label LabelName={"www.doc.in"} />
-                </div>
-              </div>
-              <div className='row form_group'>
-                <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={'Evaluation Sheet'} />
-                </div>
-                <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <Label LabelName={'www.eval.in'} />
-                </div>
-              </div>
-              <div className="row form_group">
-                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                  <Label LabelName={"HR Name"} />
-                </div>
-                <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                  <InputSelect selectedOption={this.state.HrNameSelections} />
-                </div>
-              </div>
-              <div className='row form_group'>
-                <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={'Evalulate'} />
-                </div>
-                <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <InputSelect selectedOption={this.state.EvaluateSelection}/>
-                </div>
-              </div>
-              <div className="row form_group">
-                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                  <Label LabelName={"Seniority"} />
-                </div>
-                <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                  <InputSelect selectedOption={this.state.SenioritySelections}/>
-                </div>
-              </div>
-              <div className='row form_group'>
-                <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-                  <Label LabelName={'Feedback'} />
-                </div>
-                <div className='col-xs-10  col-sm-10 col-md-10 col-lg-10 '>
-                  <InputTextArea rows = {5}/>
-                </div >
-              </div>
-              <div className="row form_group">
-                <div className="col-sm-offset-5 col-sm-7">
-                  <span><Button ButtonName={"Submit"}/></span>
-                  <span className="margin-l-5"><Button ButtonName={"Cancel"} onClick ={this.handlecloseModal}/></span>
-                </div>
-              </div>
-              </div>
-        </section>
-      </div></div>
-  </div></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

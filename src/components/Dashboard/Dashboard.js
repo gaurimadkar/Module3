@@ -80,11 +80,11 @@ class Dashboard extends Component {
     var self = this;
     const options = {
       onRowClick: function(row) {
-        if(row.l1result && !row.evaluate){
-          self.handleopenModal(row, 'L1');
-        }else if(row.l1result && row.evaluate){
-          self.handleopenModal(row, 'GK');
-        }
+        // if(row.l1result && !row.evaluate){
+        //   self.handleopenModal(row, 'L1');
+        // }else if(row.l1result && row.evaluate){
+        //   self.handleopenModal(row, 'GK');
+        // }
       }
     };
     return (
