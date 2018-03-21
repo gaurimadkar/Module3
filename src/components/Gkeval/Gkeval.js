@@ -46,14 +46,12 @@ class Gkeval extends Component {
   render() {
     return (
       <div>
-        <div className="L1eval">
-          <div className="container">
-            <div className="col-lg-12">
-              <section className="panel">
+        <div className="L1eval">         
+            <div className="col-lg-12 defaultAlign">
+              <section>
                 <header className="panel-heading">
                   GK Evaluation form:
-                </header>
-                <div className="panel-body">
+                </header>               
                   <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
                     <input type="hidden" name="id" value={this.props.data.id} />
                     <div className="row form_group">
@@ -147,12 +145,10 @@ class Gkeval extends Component {
                         </span>
                       </div>
                     </div>
-                  </form>
-                </div>
+                  </form>               
               </section>
             </div>
-          </div>
-        </div>
+          </div>       
       </div>
     );
   }

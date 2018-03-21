@@ -16,14 +16,7 @@ class L1eval extends Component {
       HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
     };
     this.onGetdata = this.onGetdata.bind(this);
-    // this.closeModal=  this.closeModal.bind(this);
   }
-
-  // closeModal(){
-  //   console.log('props' , this.props);  
-  //   this.props.handleCloseModal();
-  // }
-
   onGetdata = (e) => {
 
     let obj = {
@@ -48,105 +41,102 @@ class L1eval extends Component {
   render() {
     return (
       <div>
-        <div className="L1eval defaultAlign">
-
+        <div className="L1eval">
           <div className="col-lg-12 defaultAlign">
-            <section className="defaultAlign">
+            <section>
               <header className="panel-heading">
                 L1 Evaluation form:
-                </header>
-                <div className="panel-body">
-                  <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
-                    <input type="hidden"  name="id" value={this.props.data.id}/>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Name"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
-                        <p>{this.props.data.name}</p>
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Resume"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.cvlink}</a></p>
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Evaluation Sheet"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <p><a href={this.props.data.evallink}  target="_blank">{this.props.data.evallink}</a></p>
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"HR Name"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <p>{this.props.data.hrname}</p>
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Testscore"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <span>11</span>
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Evalulate"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect selectedValue={this.props.data.l1evaluate}
-                          onNameChange={this.onNameChange.bind(this)}
-                          name="evalSel"
-                          selectedOption={this.state.EvaluateSelection} />
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Seniority"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputSelect selectedValue={this.props.data.seniority}
-                          onNameChange={this.onNameChange.bind(this)}
-                          name="Seniority"
-                          selectedOption={this.state.SenioritySelections} />
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                      <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <Label LabelName={"Feedback"} />
-                      </div>
-                      <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
-                        <InputTextArea setValue={this.props.data.feedback}
-                          rows={5}
-                          onNameChange={this.onNameChange.bind(this)}
-                          name="feedback" />
-                      </div>
-                    </div>
-                    <div className="row form_group">
-                    <div className="col-sm-offset-5 col-sm-7">
-                      <span>
-                        <button type="submit" className="btn btn-primary" onClick={this.props.handleCloseModal} >Submit</button>
-                      </span>
-                      <span className="margin-l-5">
-                        <button className="btn btn-primary" onClick={this.props.handleCloseModal} >Cancel</button>
-                      </span>
-                    </div>
-                    </div>
-                  </form>
+              </header>
+              <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
+                <input type="hidden" name="id" value={this.props.data.id} />
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Name"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10">
+                    <p>{this.props.data.name}</p>
+                  </div>
                 </div>
-              </section>
-            </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Resume"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <p><a href={this.props.data.evallink} target="_blank">{this.props.data.cvlink}</a></p>
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Evaluation Sheet"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <p><a href={this.props.data.evallink} target="_blank">{this.props.data.evallink}</a></p>
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"HR Name"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <p>{this.props.data.hrname}</p>
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Testscore"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <span>11</span>
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Evalulate"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <InputSelect selectedValue={this.props.data.l1evaluate}
+                      onNameChange={this.onNameChange.bind(this)}
+                      name="evalSel"
+                      selectedOption={this.state.EvaluateSelection} />
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Seniority"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <InputSelect selectedValue={this.props.data.seniority}
+                      onNameChange={this.onNameChange.bind(this)}
+                      name="Seniority"
+                      selectedOption={this.state.SenioritySelections} />
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <Label LabelName={"Feedback"} />
+                  </div>
+                  <div className="col-xs-10  col-sm-10 col-md-10 col-lg-10 ">
+                    <InputTextArea setValue={this.props.data.feedback}
+                      rows={5}
+                      onNameChange={this.onNameChange.bind(this)}
+                      name="feedback" />
+                  </div>
+                </div>
+                <div className="row form_group">
+                  <div className="col-sm-offset-5 col-sm-7">
+                    <span>
+                      <button type="submit" className="btn btn-primary" onClick={this.props.handleCloseModal} >Submit</button>
+                    </span>
+                    <span className="margin-l-5">
+                      <button className="btn btn-primary" onClick={this.props.handleCloseModal} >Cancel</button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </section>
           </div>
-        </div>   
+        </div>
+      </div>
 
     );
   }
