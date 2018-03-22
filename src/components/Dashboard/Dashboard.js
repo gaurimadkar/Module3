@@ -3,6 +3,8 @@ import { Component } from "react";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 import InputModal from "../resuableComponent/InputModal";
 import Constants from "../../common/Constants";
+import L1eval from "../L1eval/L1eval";
+import Gkeval from "../Gkeval/Gkeval";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -39,10 +41,7 @@ class Dashboard extends Component {
     }
   }
 
-  dataToDashboard = (recivedObjData) => {
-    this.setState({
-      formdata: [...this.state.list, recivedObjData]
-    });
+  dataToDashboard = (recivedObjData) => {   
     let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
     updateRowData.evaluateresult = recivedObjData.evaluateresult;
     updateRowData.seniority =  recivedObjData.seniority;
@@ -78,7 +77,8 @@ class Dashboard extends Component {
         </BootstrapTable>
         <InputModal modalIsOpen={this.state.isOpenModal} compName={this.state.compName} data={this.state.selectedCandidate} handleCloseModal={this.handleCloseModal.bind(this)}
           transferDataToDashboard={this.dataToDashboard.bind(this)}
-        />
+        />     
+        
       </div>
     );
   }
