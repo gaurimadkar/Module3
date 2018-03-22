@@ -41,12 +41,13 @@ class Dashboard extends Component {
     }
   }
 
-  dataToDashboard = (recivedObjData) => {   
+  dataToDashboard = (recivedObjData) => { 
+    
     let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
     updateRowData.evaluateresult = recivedObjData.evaluateresult;
     updateRowData.seniority =  recivedObjData.seniority;
     updateRowData.feedback= recivedObjData.feedback;
-    updateRowData.l1result= recivedObjData.l1result;
+    updateRowData.l1evaluate= recivedObjData.l1result;
     updateRowData.evaluate= recivedObjData.evaluate;
   }
 

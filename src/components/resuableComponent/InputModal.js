@@ -6,15 +6,14 @@ import L1eval from "../L1eval/L1eval";
 
 const customStyles = {
   content: {
-    top: "70%",
+    top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "68%",
+    width: "50%",
     border: "none",
-    border:"1px solid rgba(0,0,0,.2)",
     padding:"0",
     margin:"0"
   }
