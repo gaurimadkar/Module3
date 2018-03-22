@@ -1,6 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-
 import Button from '../resuableComponent/Button';
 import InputSelect from '../resuableComponent/InputSelect';
 import InputText from '../resuableComponent/InputText';
@@ -11,23 +10,20 @@ class Gkeval extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      objGkEval: props.data,
       EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
       SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
       HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina']
     };
-    this.handlecloseModal = this.handlecloseModal.bind(this);
     this.onGetdata = this.onGetdata.bind(this);
   }
 
   onGetdata = (e) => {
     let obj = {
-      evaluateresult: this.state.evalSel,
-      seniority: this.state.Seniority,
-      feedback: this.state.feedback,
+      gkseniority: this.state.Seniority,
+      feedbackGK: this.state.feedback,
       id: this.props.data.id,
-      l1result: this.state.evalSel,
-      evaluate: this.state.evalSel
+      gkevaluate: this.state.evalSel,
+      formName: 'GK'
     }
     this.props.transferDataToInputModal(obj);
     this.props.handleCloseModal();
@@ -47,12 +43,12 @@ class Gkeval extends Component {
   render() {
     return (
       <div>
-        <div className="L1eval">         
+        <div className="L1eval">
             <div className="col-lg-12 defaultAlign">
               <section>
                 <header className="panel-heading">
                   GK Evaluation form:
-                </header>               
+                </header>
                   <form data-toggle="validator" role="form" onSubmit={this.onGetdata}>
                     <input type="hidden" name="id" value={this.props.data.id} />
                     <div className="row form_group">
@@ -108,7 +104,7 @@ class Gkeval extends Component {
                         <Label LabelName={"Evalulate"} />
                       </div>
                       <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                        <InputSelect selectedValue={this.props.data.evaluate}
+                        <InputSelect
                           onNameChange={this.onNameChange.bind(this)}
                           name="evalSel"
                           selectedOption={this.state.EvaluateSelection} />
@@ -119,7 +115,7 @@ class Gkeval extends Component {
                         <Label LabelName={"Seniority"} />
                       </div>
                       <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                        <InputSelect selectedValue={this.props.data.seniority}
+                        <InputSelect
                           onNameChange={this.onNameChange.bind(this)}
                           name="Seniority"
                           selectedOption={this.state.SenioritySelections} />
@@ -130,7 +126,7 @@ class Gkeval extends Component {
                         <Label LabelName={"Feedback"} />
                       </div>
                       <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                        <InputTextArea setValue={this.props.data.feedbackGK}
+                        <InputTextArea
                           rows={5}
                           onNameChange={this.onNameChange.bind(this)}
                           name="feedback" />
@@ -146,10 +142,10 @@ class Gkeval extends Component {
                         </span>
                       </div>
                     </div>
-                  </form>               
+                  </form>
               </section>
             </div>
-          </div>       
+          </div>
       </div>
     );
   }

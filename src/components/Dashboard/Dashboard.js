@@ -36,19 +36,26 @@ class Dashboard extends Component {
   }
 
   cellButtonForGK(cell, row) {
-    if(row.l1evaluate === "Selected"){
+    if(row.gkevaluate === "Selected"){
+      return <label>{row.l1evaluate}</label>;
+    }else if(row.l1evaluate === "Rejected"){
+      return "";
+    }else{
       return <button onClick={() => this.handleopenModal(row, 'GK')}>Fill GK Form</button>;
     }
   }
 
-  dataToDashboard = (recivedObjData) => { 
-    
+  dataToDashboard = (recivedObjData) => {
     let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
-    updateRowData.evaluateresult = recivedObjData.evaluateresult;
-    updateRowData.seniority =  recivedObjData.seniority;
-    updateRowData.feedback= recivedObjData.feedback;
-    updateRowData.l1evaluate= recivedObjData.l1result;
-    updateRowData.evaluate= recivedObjData.evaluate;
+    if(recivedObjData.formName === 'L1'){
+      updateRowData.l1seniority =  recivedObjData.l1seniority;
+      updateRowData.feedbackL1= recivedObjData.feedbackL1;
+      updateRowData.l1evaluate= recivedObjData.l1evaluate;
+    }else{
+      updateRowData.gkseniority =  recivedObjData.gkseniority;
+      updateRowData.feedbackGK= recivedObjData.feedbackGK;
+      updateRowData.gkevaluate= recivedObjData.gkevaluate;
+    }
   }
 
   componentDidMount = () => {
@@ -67,7 +74,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={this.state.list} striped={true}hover={true}search searchPlaceholder="Search" pagination>
+        <BootstrapTable ref="table" data={this.state.list} striped={true} hover={true} search searchPlaceholder="Search" pagination>
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
@@ -78,8 +85,7 @@ class Dashboard extends Component {
         </BootstrapTable>
         <InputModal modalIsOpen={this.state.isOpenModal} compName={this.state.compName} data={this.state.selectedCandidate} handleCloseModal={this.handleCloseModal.bind(this)}
           transferDataToDashboard={this.dataToDashboard.bind(this)}
-        />     
-        
+        />
       </div>
     );
   }

@@ -19,12 +19,11 @@ class L1eval extends Component {
   }
   onGetdata = (e) => {
     let obj = {
-      evaluateresult: this.state.evalSel,
-      seniority: this.state.Seniority,
-      feedback: this.state.feedback,
+      l1evaluate: this.state.evalSel,
+      l1seniority: this.state.Seniority,
+      feedbackL1: this.state.feedback,
       id: this.props.data.id,
-      l1result: this.state.evalSel,
-      evaluate: this.state.evalSel
+      formName: 'L1'
     }
     this.props.transferDataToInputModal(obj);
     this.props.handleCloseModal();
@@ -89,33 +88,33 @@ class L1eval extends Component {
                   </div>
                 </div>
                 <div className="row form_group">
-                  <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <Label LabelName={"Evalulate"} />
+                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                      <Label LabelName={"Evalulate"} />
+                    </div>
+                    <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
+                      <InputSelect
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="evalSel"
+                        selectedOption={this.state.EvaluateSelection} />
+                    </div>
                   </div>
-                  <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                    <InputSelect selectedValue={this.props.data.l1evaluate}
-                      onNameChange={this.onNameChange.bind(this)}
-                      name="evalSel"
-                      selectedOption={this.state.EvaluateSelection} />
+                  <div className="row form_group">
+                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                      <Label LabelName={"Seniority"} />
+                    </div>
+                    <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
+                      <InputSelect
+                        onNameChange={this.onNameChange.bind(this)}
+                        name="Seniority"
+                        selectedOption={this.state.SenioritySelections} />
+                    </div>
                   </div>
-                </div>
-                <div className="row form_group">
-                  <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <Label LabelName={"Seniority"} />
-                  </div>
-                  <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                    <InputSelect selectedValue={this.props.data.seniority}
-                      onNameChange={this.onNameChange.bind(this)}
-                      name="Seniority"
-                      selectedOption={this.state.SenioritySelections} />
-                  </div>
-                </div>
                 <div className="row form_group">
                   <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <Label LabelName={"Feedback"} />
                   </div>
                   <div className="col-xs-9  col-sm-9 col-md-9 col-lg-9">
-                    <InputTextArea setValue={this.props.data.feedback}
+                    <InputTextArea
                       rows={5}
                       onNameChange={this.onNameChange.bind(this)}
                       name="feedback" />
