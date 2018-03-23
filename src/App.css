@@ -26,8 +26,9 @@ body {
   font-size:14px !important;
 }
 .panel-heading{
+  text-align: center;
   background: #515050;
-  color: #c4c3c3;
+  color: white;
   line-height: 34px;
   padding-top: 10px;
   font-size: 20px;
@@ -87,14 +88,11 @@ body {
   .selected{
     background: green;
     color: white;
+    font-weight: 700;
   }
 
   .rejected{
     background: red;
     color: white;
-  }
-
-  .clearStatus{
-    background:none;
-    color: none;
+    font-weight: 700;
   }
