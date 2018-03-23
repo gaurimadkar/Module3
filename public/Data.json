@@ -6,12 +6,12 @@
     "cvlink": "http://www.googledrive.com/amit",
     "evallink": "http://www.googledrive.com/amit",
     "hrname" : "Kapil",
-    "l1result": true,
     "l1evaluate": "Selected",
-    "seniority": "Jr",
-    "evaluateresult": "",
+    "l1seniority": "Jr",
     "feedbackL1": "aaaa",
-    "feedbackGK": "bbbb"
+    "feedbackGK": "bbbb",
+    "gkevaluate": "Selected",
+    "gkseniority": "Jr"
   },
   {
       "id": 2,
@@ -20,12 +20,12 @@
       "cvlink":"www.googledrive.com/pradeep",
       "evallink":"www.googledrive.com/pradeep",
       "hrname" : "Namrata",
-      "l1result": true,
       "l1evaluate": "",
-      "seniority": "S.Sr",
-      "evaluateresult": "",
+      "l1seniority": "S.Sr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Selected",
+      "gkseniority": "Jr"
   },
   {
       "id": 3,
@@ -34,12 +34,12 @@
       "cvlink":"www.googledrive.com/yash",
       "evallink":"www.googledrive.com/yash",
       "hrname" : "Sunaina",
-      "l1result": false,
-      "l1evaluate": "Rejected",
-      "seniority": "S.Sr",
-      "evaluateresult": "",
+      "l1evaluate": "Selected",
+      "l1seniority": "S.Sr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Selected",
+      "gkseniority": "Jr"
   },
   {
       "id": 4,
@@ -48,12 +48,12 @@
       "cvlink":"www.googledrive.com/minal",
       "evallink":"www.googledrive.com/minal",
       "hrname" : "Sunaina",
-      "l1result": false,
-      "l1evaluate": "Rejected",
-      "seniority": "Sr",
-      "evaluateresult": "",
+      "l1evaluate": "Selected",
+      "l1seniority": "Sr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Selected",
+      "gkseniority": "Jr"
   },
   {
       "id": 5,
@@ -62,12 +62,12 @@
       "cvlink":"www.googledrive.com/harshad",
       "evallink":"www.googledrive.com/harshad",
       "hrname" : "Kapil",
-      "l1result": true,
       "l1evaluate": "Selected",
-      "seniority": "Sr",
-      "evaluateresult": "",
+      "l1seniority": "Sr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Selected",
+      "gkseniority": "Jr"
   },
   {
       "id": 6,
@@ -76,12 +76,12 @@
       "cvlink":"www.googledrive.com/kiran",
       "evallink":"www.googledrive.com/kiran",
       "hrname" : "Kapil",
-      "l1result":false,
       "l1evaluate": "Selected",
-      "seniority": "SD",
-      "evaluateresult": "",
+      "l1seniority": "SD",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Selected",
+      "gkseniority": "Jr"
   },
   {
       "id": 7,
@@ -90,12 +90,12 @@
       "cvlink":"www.googledrive.com/kirti",
       "evallink":"www.googledrive.com/kirti",
       "hrname" : "Sunaina",
-      "l1result": true,
       "l1evaluate": "Rejected",
-      "seniority": "",
-      "evaluateresult": "",
+      "l1seniority": "",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "",
+      "gkseniority": "Jr"
   },
   {
       "id": 8,
@@ -104,12 +104,12 @@
       "cvlink":"www.googledrive.com/sumit",
       "evallink":"www.googledrive.com/sumit",
       "hrname" : "Sunaina",
-      "l1result": false,
       "l1evaluate": "Selected",
-      "seniority": "SD",
-      "evaluateresult": "",
+      "l1seniority": "SD",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "",
+      "gkseniority": "Jr"
   },
   {
       "id": 9,
@@ -118,12 +118,12 @@
       "cvlink":"www.googledrive.com/kiran",
       "evallink":"www.googledrive.com/kiran",
       "hrname" : "Namrata",
-      "l1result":true,
       "l1evaluate": "Rejected",
-      "seniority": "S.Sr",
-      "evaluateresult": "",
+      "l1seniority": "S.Sr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Rejected",
+      "gkseniority": "Jr"
   },
   {
       "id": 10,
@@ -132,12 +132,12 @@
       "cvlink":"www.googledrive.com/shruti",
       "evallink":"www.googledrive.com/shruti",
       "hrname" : "Namrata",
-      "l1result": true,
-      "l1evaluate": false,
-      "seniority": "SD",
-      "evaluateresult": "",
+      "l1evaluate": "Rejected",
+      "l1seniority": "SD",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Rejected",
+      "gkseniority": "Jr"
   },
   {
       "id": 11,
@@ -146,11 +146,11 @@
       "cvlink":"www.googledrive.com/amar",
       "evallink":"www.googledrive.com/amar",
       "hrname" : "Namrata",
-      "l1result":true,
       "l1evaluate": "Rejected",
-      "seniority": "Jr",
-      "evaluateresult": "",
+      "l1seniority": "Jr",
       "feedbackL1": "aaaa",
-      "feedbackGK": "bbbb"
+      "feedbackGK": "bbbb",
+      "gkevaluate": "Rejected",
+      "gkseniority": "Jr"
   }
 ]
