@@ -15,7 +15,8 @@ class Dashboard extends Component {
       list: [],
       isOpenModal: false,
       selectedCandidate: {},
-      compName: null
+      compName: null,
+      edited: []
     };
   }
 
@@ -29,7 +30,7 @@ class Dashboard extends Component {
 
   cellButtonForL1(cell, row) {
     if(row.l1evaluate === "Rejected" || row.l1evaluate === "Selected"){
-      return <label>{row.l1evaluate}</label>;
+      return <span>{row.l1evaluate}</span>;
     }else{
       return <button onClick={() => this.handleopenModal(row, 'L1')}>Fill L1 Form</button>;
     }
@@ -38,8 +39,10 @@ class Dashboard extends Component {
   cellButtonForGK(cell, row) {
     if(row.gkevaluate === "Selected"){
       return <label>{row.l1evaluate}</label>;
+    }else if(row.gkevaluate === "Rejected"){
+      return <span>{row.gkevaluate}</span>;;
     }else if(row.l1evaluate === "Rejected"){
-      return "";
+      return '';
     }else{
       return <button onClick={() => this.handleopenModal(row, 'GK')}>Fill GK Form</button>;
     }
@@ -71,20 +74,36 @@ class Dashboard extends Component {
       });
   };
 
+  setL1EvaluateClass = (fieldValue, row, rowIdx, colIdx) => {
+    if(row.l1evaluate === "Selected"){
+      return 'selected';
+    }else if(row.l1evaluate === "Rejected"){
+      return 'rejected';
+    }
+  }
+  setGKEvaluateClass = (fieldValue, row, rowIdx, colIdx) => {
+    if(row.gkevaluate === "Selected"){
+      return 'selected';
+    }else if(row.gkevaluate === "Rejected"){
+      return 'rejected';
+    }
+  }
+
   render() {
     return (
       <div className="col-md-12 demo-div heading-section">
-        <BootstrapTable ref="table" data={this.state.list} striped={true} hover={true} search searchPlaceholder="Search" pagination>
+        <h3>Module 3</h3>
+        <BootstrapTable ref="table" data={this.state.list} striped={true} hover={true} search  searchPlaceholder="Search" pagination>
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="experience" dataSort>Yrs of Experience</TableHeaderColumn>
-          <TableHeaderColumn dataField="cvlink" dataSort>CV Link</TableHeaderColumn>
-          <TableHeaderColumn dataField="evallink" dataSort>Evaluation Link</TableHeaderColumn>
-          <TableHeaderColumn dataField="l1result" dataFormat={this.cellButtonForL1} dataSort>L1 Result</TableHeaderColumn>
-          <TableHeaderColumn dataField="evaluate" dataFormat={this.cellButtonForGK} dataSort>Evaluate</TableHeaderColumn>
+          <TableHeaderColumn dataField="name"  dataAlign="center" headerAlign='center' width='250' dataSort>Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="experience"  dataAlign="center" headerAlign='center' width='150' dataSort>Yrs of Experience</TableHeaderColumn>
+          <TableHeaderColumn dataField="cvlink"  headerAlign='center' width='250' dataSort>CV Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="evallink"  headerAlign='center' width='250' dataSort>Evaluation Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="l1result"  dataAlign="center" headerAlign='center' width='150' columnClassName={ this.setL1EvaluateClass } dataFormat={this.cellButtonForL1} dataSort>L1 Result</TableHeaderColumn>
+          <TableHeaderColumn dataField="evaluate"  dataAlign="center" headerAlign='center' width='150' columnClassName={ this.setGKEvaluateClass } dataFormat={this.cellButtonForGK} dataSort>GK Result</TableHeaderColumn>
         </BootstrapTable>
-        <InputModal modalIsOpen={this.state.isOpenModal} compName={this.state.compName} data={this.state.selectedCandidate} handleCloseModal={this.handleCloseModal.bind(this)}
-          transferDataToDashboard={this.dataToDashboard.bind(this)}
+        <InputModal modalIsOpen={this.state.isOpenModal} compName={this.state.compName} data={this.state.selectedCandidate}
+        handleCloseModal={this.handleCloseModal.bind(this)} transferDataToDashboard={this.dataToDashboard.bind(this)}
         />
       </div>
     );

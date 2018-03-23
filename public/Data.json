@@ -24,7 +24,7 @@
       "l1seniority": "S.Sr",
       "feedbackL1": "aaaa",
       "feedbackGK": "bbbb",
-      "gkevaluate": "Selected",
+      "gkevaluate": "",
       "gkseniority": "Jr"
   },
   {
@@ -150,7 +150,7 @@
       "l1seniority": "Jr",
       "feedbackL1": "aaaa",
       "feedbackGK": "bbbb",
-      "gkevaluate": "Rejected",
+      "gkevaluate": "",
       "gkseniority": "Jr"
   }
 ]
