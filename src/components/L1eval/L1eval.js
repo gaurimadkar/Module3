@@ -1,5 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
+import Const from "../../common/Constants";
 import InputText from '../resuableComponent/InputText';
 import InputSelect from '../resuableComponent/InputSelect';
 import InputTextArea from '../resuableComponent/InputTextArea';
@@ -11,9 +12,9 @@ class L1eval extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      EvaluateSelection: ['Select Option', 'Selected', 'Rejected'],
-      SenioritySelections: ['Select Option', 'Jr', 'S.Sr', 'Sr', 'SD'],
-      HrNameSelections: ['Select Option', 'Namrata', 'Kapil', 'Sunaina'],
+      EvaluateSelection: Const.EvaluateSelection,
+      SenioritySelections: Const.SenioritySelections,
+      HrNameSelections:  Const.HrNameSelections
     };
     this.onGetdata = this.onGetdata.bind(this);
   }
