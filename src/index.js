@@ -5,5 +5,25 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from '../src/state/reducer/reducer';
+
+const initialState = {
+    list: [],
+    isOpenModal: false,
+    selectedCandidate: {},
+    compName: null
+}
+
+const store = createStore(reducer, initialState);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
+
 registerServiceWorker();

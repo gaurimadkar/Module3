@@ -12,10 +12,10 @@ class Dashboard extends Component {
     this.cellButtonForL1 = this.cellButtonForL1.bind(this);
     this.cellButtonForGK = this.cellButtonForGK.bind(this);
     this.state = {
-      list: [],
-      isOpenModal: false,
-      selectedCandidate: {},
-      compName: null
+      // list: [],
+      // isOpenModal: false,
+      // selectedCandidate: {},
+      // compName: null
     };
   }
 
