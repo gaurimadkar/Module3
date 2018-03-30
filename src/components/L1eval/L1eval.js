@@ -19,6 +19,7 @@ class L1eval extends Component {
     this.onGetdata = this.onGetdata.bind(this);
   }
   onGetdata = (e) => {
+    e.preventDefault();
     let obj = {
       l1evaluate: this.state.evalSel,
       l1seniority: this.state.Seniority,
@@ -28,7 +29,6 @@ class L1eval extends Component {
     }
     this.props.transferDataToInputModal(obj);
     this.props.handleCloseModal();
-    e.preventDefault();
   };
 
   onNameChange(e) {

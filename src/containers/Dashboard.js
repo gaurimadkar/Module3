@@ -1,24 +1,29 @@
 import React from "react";
 import { Component } from "react";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
-import InputModal from "../resuableComponent/InputModal";
-import Const from "../../common/Constants";
-import L1eval from "../L1eval/L1eval";
-import Gkeval from "../Gkeval/Gkeval";
+import InputModal from '../components/resuableComponent/InputModal';
+import Const from '../common/Constants';
+import L1eval from '../components/L1eval/L1eval';
+import Gkeval from '../components/Gkeval/Gkeval';
+import { connect } from 'react-redux';
+import {fetchCandidate} from '../states/actions/fetchCandidateAction';
+
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.cellButtonForL1 = this.cellButtonForL1.bind(this);
     this.cellButtonForGK = this.cellButtonForGK.bind(this);
-    this.state = {
-      list: [],
+   
+    this.state = {    
       isOpenModal: false,
       selectedCandidate: {},
       compName: null
     };
   }
-
+  componentDidMount() {
+    this.props.fetchCandidate();
+  }
   handleopenModal(row, buttonName) {
     this.setState({ isOpenModal: true, selectedCandidate: row, compName: buttonName });
   }
@@ -48,7 +53,7 @@ class Dashboard extends Component {
   }
 
   dataToDashboard = (recivedObjData) => {
-    let updateRowData = this.state.list.find(filterData => filterData.id === recivedObjData.id);
+    let updateRowData = this.props.list.find(filterData => filterData.id === recivedObjData.id);
     if(recivedObjData.formName === 'L1'){
       updateRowData.l1seniority =  recivedObjData.l1seniority;
       updateRowData.feedbackL1= recivedObjData.feedbackL1;
@@ -58,18 +63,7 @@ class Dashboard extends Component {
       updateRowData.feedbackGK= recivedObjData.feedbackGK;
       updateRowData.gkevaluate= recivedObjData.gkevaluate;
     }
-  }
-
-  componentDidMount = () => {
-    var self = this;
-    fetch(Const.URL)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {
-        self.setState({ list: json });
-      });
-  };
+  }  
 
   setL1EvaluateClass = (fieldValue, row, rowIdx, colIdx) => {
     if(row.l1evaluate === "Selected"){
@@ -88,10 +82,11 @@ class Dashboard extends Component {
   }
 
   render() {
+    console.log("props:",this.props);
     return (
-      <div className="col-md-12 demo-div heading-section">
+      <div className="col-md-12 demo-div heading-section App">
         <h3>Module 3</h3>
-        <BootstrapTable ref="table" headerStyle={ { background: '#515050', color:'white' } } data={this.state.list} striped={true} hover={true} search  searchPlaceholder="Search" pagination>
+        <BootstrapTable ref="table" headerStyle={ { background: '#515050', color:'white' } } data={this.props.list} striped={true} hover={true} search  searchPlaceholder="Search" pagination>
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name"  dataAlign="center" headerAlign='center' width='250' dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience"  dataAlign="center" headerAlign='center' width='150' dataSort>Yrs of Experience</TableHeaderColumn>
@@ -107,5 +102,17 @@ class Dashboard extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    list: state.fetchCandidateReducer.list,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCandidate: () => {
+          dispatch(fetchCandidate())
+      }
 
-export default Dashboard;
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);
