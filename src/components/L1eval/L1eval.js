@@ -1,12 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import Const from "../../common/Constants";
-import InputText from '../resuableComponent/InputText';
 import InputSelect from '../resuableComponent/InputSelect';
 import InputTextArea from '../resuableComponent/InputTextArea';
 import Label from '../resuableComponent/Label';
-import Button from '../resuableComponent/Button';
-
 
 class L1eval extends Component {
   constructor(props) {
