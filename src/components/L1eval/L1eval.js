@@ -1,12 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import Const from "../../common/Constants";
-import InputText from '../resuableComponent/InputText';
 import InputSelect from '../resuableComponent/InputSelect';
 import InputTextArea from '../resuableComponent/InputTextArea';
 import Label from '../resuableComponent/Label';
-import Button from '../resuableComponent/Button';
-
 
 class L1eval extends Component {
   constructor(props) {
@@ -19,6 +16,7 @@ class L1eval extends Component {
     this.onGetdata = this.onGetdata.bind(this);
   }
   onGetdata = (e) => {
+    e.preventDefault();
     let obj = {
       l1evaluate: this.state.evalSel,
       l1seniority: this.state.Seniority,
@@ -28,7 +26,6 @@ class L1eval extends Component {
     }
     this.props.transferDataToInputModal(obj);
     this.props.handleCloseModal();
-    e.preventDefault();
   };
 
   onNameChange(e) {

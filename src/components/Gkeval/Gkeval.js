@@ -1,9 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import Const from "../../common/Constants";
-import Button from '../resuableComponent/Button';
 import InputSelect from '../resuableComponent/InputSelect';
-import InputText from '../resuableComponent/InputText';
 import InputTextArea from '../resuableComponent/InputTextArea';
 import Label from '../resuableComponent/Label';
 
