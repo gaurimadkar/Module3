@@ -79,8 +79,8 @@ class Dashboard extends Component {
           <TableHeaderColumn hidden={true} dataField="id" isKey dataAlign="center" dataSort>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataAlign="center" headerAlign='center' width='250' dataSort>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="experience" dataAlign="center" headerAlign='center' width='150' dataSort>Yrs of Experience</TableHeaderColumn>
-          <TableHeaderColumn dataField="cvlink" headerAlign='center' width='250' dataSort>CV Link</TableHeaderColumn>
-          <TableHeaderColumn dataField="evallink" headerAlign='center' width='250' dataSort>Evaluation Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="cvlink" headerAlign='center' dataAlign="center" width='250' dataSort>CV Link</TableHeaderColumn>
+          <TableHeaderColumn dataField="evallink" headerAlign='center' dataAlign="center" width='250' dataSort>Evaluation Link</TableHeaderColumn>
           <TableHeaderColumn dataField="l1result" dataAlign="center" headerAlign='center' width='150' columnClassName={this.setL1EvaluateClass} dataFormat={this.cellButtonForL1} dataSort>L1 Result</TableHeaderColumn>
           <TableHeaderColumn dataField="evaluate" dataAlign="center" headerAlign='center' width='150' columnClassName={this.setGKEvaluateClass} dataFormat={this.cellButtonForGK} dataSort>GK Result</TableHeaderColumn>
         </BootstrapTable>
@@ -101,8 +101,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchCandidate: () => {
       dispatch(fetchCandidate())
     },
-    updateDashboard: (name) => {
-      dispatch(updateDashboard(name))
+    updateDashboard: (obj) => {
+      dispatch(updateDashboard(obj))
     }
   };
 };
